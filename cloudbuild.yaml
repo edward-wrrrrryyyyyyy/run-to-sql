@@ -5,7 +5,7 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag1'
+  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag2'
   - '.'
 
 # This step pushes the image to Artifact Registry
@@ -15,7 +15,7 @@ steps:
   id: Push
   args:
   - 'push'
-  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag1'
+  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag2'
 # [END cloudbuild]
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -25,7 +25,7 @@ steps:
   - 'deploy'
   - 'edward-cloudbuild-cloudrun'
   - '--image'
-  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag1'
+  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag2'
   - '--region'
   - 'asia-east1'
   - '--allow-unauthenticated'
@@ -42,4 +42,4 @@ steps:
 
 
 images:
-- 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag1'
+- 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag2'
