@@ -1,0 +1,45 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build
+  args:
+  - 'build'
+  - '-t'
+  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag1'
+  - '.'
+
+# This step pushes the image to Artifact Registry
+# The PROJECT_ID and SHORT_SHA variables are automatically
+# replaced by Cloud Build.
+- name: 'gcr.io/cloud-builders/docker'
+  id: Push
+  args:
+  - 'push'
+  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag1'
+# [END cloudbuild]
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'edward-cloudbuild-cloudrun'
+  - '--image'
+  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag1'
+  - '--region'
+  - 'asia-east1'
+  - '--allow-unauthenticated'
+  - '--set-cloudsql-instances'
+  - 'gcpsa-sandbox:asia-east1:edward-db-test'
+  - '--set-env-vars'
+  - 'INSTANCE_UNIX_SOCKET=/cloudsql/gcpsa-sandbox:asia-east1:edward-mysql'
+  - '--set-env-vars'
+  - DB_USER='edward
+  - '--set-env-vars'
+  - DB_PASS=1qaz@wsx
+  - '--set-env-vars'
+  - 'DB_NAME=quickstart-db'
+
+
+images:
+- 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:tag1'
