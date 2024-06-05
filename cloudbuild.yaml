@@ -5,7 +5,7 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-image:$COMMIT_SHA'
+  - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository:$COMMIT_SHA'
   - '.'
 
 # This step pushes the image to Artifact Registry
