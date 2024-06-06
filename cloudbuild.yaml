@@ -40,6 +40,22 @@ steps:
   - '--set-env-vars'
   - 'DB_NAME=quickstart-db'
 
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'update'
+  - 'edward-cloudbuild-cloudrun'
+  - '--add-cloudsql-instances'
+  - 'gcpsa-sandbox:asia-east1:edward-mysql'
+  - '--update-env-vars'
+  - INSTANCE_CONNECTION_NAME=edward-secretm-run-db-connection-name
+  - '--update-env-vars'
+  - DB_USER=edward-secretm-run-db-user
+  - '--update-env-vars'
+  - DB_PASS=edward-secretm-run-db-pass
+  - '--update-env-vars'
+  - DB_NAME=edward-secretm-run-db-dbname
 
 images:
 - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository/edward-zu-run-sql:tag1'
