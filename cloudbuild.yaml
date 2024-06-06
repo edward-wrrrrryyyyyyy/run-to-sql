@@ -34,7 +34,7 @@ steps:
   - '--set-env-vars'
   - 'INSTANCE_UNIX_SOCKET=/cloudsql/gcpsa-sandbox:asia-east1:edward-mysql'
   - '--set-env-vars'
-  - DB_USER='edward
+  - DB_USER=edward
   - '--set-env-vars'
   - DB_PASS=1qaz@wsx
   - '--set-env-vars'
