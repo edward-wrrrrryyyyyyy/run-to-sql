@@ -44,7 +44,7 @@ steps:
   entrypoint: gcloud
   args:
   - 'run'
-  - 'service'
+  - 'services'
   - 'update'
   - 'edward-cloudbuild-cloudrun'
   - '--add-cloudsql-instances'
