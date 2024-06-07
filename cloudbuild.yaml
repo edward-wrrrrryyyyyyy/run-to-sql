@@ -52,11 +52,11 @@ steps:
   - '--update-env-vars'
   - INSTANCE_CONNECTION_NAME=edward-secretm-run-db-connection-name
   - '--update-secrets'
-  - DB_USER=edward-secretm-run-db-user
+  - DB_USER=edward-secretm-run-db-user:latest
   - '--update-secrets'
-  - DB_PASS=edward-secretm-run-db-pass
+  - DB_PASS=edward-secretm-run-db-pass:latest
   - '--update-secrets'
-  - DB_NAME=edward-secretm-run-db-dbname
+  - DB_NAME=edward-secretm-run-db-dbname:latest
   - '--region'
   - asia-east1
 
