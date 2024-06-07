@@ -57,6 +57,8 @@ steps:
   - DB_PASS=edward-secretm-run-db-pass
   - '--update-env-vars'
   - DB_NAME=edward-secretm-run-db-dbname
+  - '--region'
+  - asia-east1
 
 images:
 - 'asia-east1-docker.pkg.dev/gcpsa-sandbox/edward-zu-repository/edward-zu-run-sql:tag1'
